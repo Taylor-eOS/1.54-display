@@ -13,8 +13,7 @@ const int BL_Channel = 0;
 const int BL_Freq = 5000;
 const int BL_Resolution = 8;
 
-void drawDiagnostics()
-{
+void drawDiagnostics() {
     tft.drawRect(4, 40, 232, 196, ST77XX_WHITE);
     tft.drawLine(4, 40, 236, 236, ST77XX_YELLOW);
     tft.drawLine(236, 40, 4, 236, ST77XX_CYAN);
@@ -23,8 +22,7 @@ void drawDiagnostics()
     tft.print("Rotation 0 240x240");
 }
 
-void setup()
-{
+void setup() {
     Serial.begin(115200);
     SPI.begin(SCLK_PIN, MISO_PIN, MOSI_PIN, CS_PIN);
     pinMode(BL_PIN, OUTPUT);
@@ -49,15 +47,12 @@ void setup()
     drawDiagnostics();
 }
 
-void loop()
-{
-    for (int b = 0; b <= 255; b += 5)
-    {
+void loop() {
+    for (int b = 0; b <= 255; b += 5) {
         ledcWrite(BL_Channel, b);
         delay(20);
     }
-    for (int b = 255; b >= 0; b -= 5)
-    {
+    for (int b = 255; b >= 0; b -= 5) {
         ledcWrite(BL_Channel, b);
         delay(20);
     }
